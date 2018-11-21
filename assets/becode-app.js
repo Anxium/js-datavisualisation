@@ -10,7 +10,7 @@ createGraphic('graph3', bodyContent);
 
 // Tableau de données
 let donnees=[];
-let donneesTwo=[];
+let donnees2=[];
 // Fonction pour pousser les données de chaque tableau dans les tableaux ci-dessus
 let fonctionTableau=(id, nomDonnee)=>{
     let tbody = id.getElementsByTagName("tbody");
@@ -30,7 +30,7 @@ let fonctionTableau=(id, nomDonnee)=>{
     }
 }
 fonctionTableau(table1, donnees);
-fonctionTableau(table2, donneesTwo);
+fonctionTableau(table2, donnees2);
 
 // Crée le premier graphique
 let svg = dimple.newSvg("#graph1", 840, 620);
@@ -54,9 +54,9 @@ chart.draw();
 // Crée le second graphique
 let svg2 = dimple.newSvg("#graph2", 840, 620);
 let data2 = [];
-for (i=0;i<donneesTwo.length;i++){
+for (i=0;i<donnees2.length;i++){
     for (let y=2;y<4;y++){
-        let dataDetail = {"Année":y, "Population":donneesTwo[i][y], "Pays":donneesTwo[i][1]};
+        let dataDetail = {"Année":y, "Population":donnees2[i][y], "Pays":donnees2[i][1]};
         if (y==2) {
             dataDetail.Année = "2007-09";
         } else if (y==3) {
@@ -85,7 +85,7 @@ let ajax = () => {
     let xhr = new XMLHttpRequest;
     xhr.open('GET', 'https://inside.becode.org/api/v1/data/random.json', true)  // Call the open function, GET-type of request, url, true-asynchronous
     xhr.onload = function() {  // Appele le onload
-        if (this.status === 200) { // Vérifie si le statut 200 est okay
+        if (this.status === 200) { // Vérifie si le statut est 200(okay)
         object = JSON.parse(this.responseText);
 
         for (i=0;i<object.length;i++){
